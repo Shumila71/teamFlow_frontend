@@ -1,0 +1,153 @@
+/* Контейнер управления пользователями */
+.user-management-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-management-title {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.user-management-error {
+  color: #e74c3c;
+  background: #fde8e8;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* Список пользователей */
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.user-item:hover {
+  background: #e9ecef;
+}
+
+.user-item.admin-user {
+  border-left: 3px solid #db3458;
+  background: #fde8e8;
+}
+
+/* Информация о пользователе */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.user-role {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.user-position {
+  color: #7f8c8d;
+}
+
+/* Кнопки и управление */
+.user-actions {
+  height: 25px;
+  display: flex;
+  gap: 10px;
+  align-self: center;
+}
+
+.make-admin-btn .remove-user-btn{
+  padding: 6px 12px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.revoke-admin-btn{
+  background: #972530 !important;
+}
+
+.remove-user-btn{
+  background: #dc3545 !important;
+}
+
+.make-admin-btn:hover {
+  background: #2980b9;
+}
+
+.position-control {
+  display: flex;
+  align-items: center;
+  gap:5px;
+}
+
+.position-input {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 150px;
+  font-size: 12px;
+}
+
+.set-position-btn {
+  padding: 6px 12px;
+  background: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.set-position-btn:hover {
+  background: #27ae60;
+}
+
+
+.user-item {
+  overflow-x: auto;
+  padding-bottom: 10px; /* Оставляем место для скроллбара */
+  scrollbar-width: thin; /* Для Firefox */
+}
+
+/* Стили для WebKit браузеров (Chrome, Safari, Edge) */
+.user-item::-webkit-scrollbar {
+  height: 8px;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+}
+
+.user-item::-webkit-scrollbar-thumb {
+  background-color: #3498db !important;
+  border-radius: 4px !important;
+}
+
+/* Стили для Firefox */
+.user-item {
+  scrollbar-color: #3498db #f5f5f5;
+  scrollbar-width: thin;
+}
