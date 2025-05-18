@@ -24,7 +24,7 @@ export default function RegisterForm() {
 
       if (!res.ok) throw new Error(data.error || "Ошибка регистрации");
 
-      // Автовход после регистрации
+      //заходим сразу после регистрации
       localStorage.setItem("token", data.token);
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("username", data.username);

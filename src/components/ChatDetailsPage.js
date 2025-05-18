@@ -12,12 +12,13 @@ export default function ChatDetailsPage({ chatId }) {
   const [availableHeight, setAvailableHeight] = useState(window.innerHeight);
   const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    // Загружаем список чатов, чтобы найти название текущего чата
+    //тянем чаты
     fetch(`${API_URL}/api/chats`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
       .then((data) => {
+        //чекаем название нашего
         const currentChat = data.find(chat => String(chat.id) === String(chatId));
         if (currentChat) {
           setChatName("Чат: "+currentChat.name);
@@ -28,7 +29,7 @@ export default function ChatDetailsPage({ chatId }) {
         setLoading(false);
       });
   }, [chatId, token]);
-
+  //красиво вставляем без скроллов сайта
   useEffect(() => {
     function updateHeight() {
       const header = document.querySelector("header");

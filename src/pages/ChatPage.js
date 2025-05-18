@@ -9,22 +9,22 @@ export default function ChatPage() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // Проверяем авторизацию при монтировании компонента
+    // чекаем на авторизацию
     if (!token) {
-      navigate("/login"); // Редирект на страницу входа
+      navigate("/login");
     }
   }, [token, navigate]);
 
-  // Если пользователь не авторизован, показываем null (редирект уже сработает)
+  // если вдруг что не так
   if (!token) {
     return null;
   }
 
-  // Если выбран конкретный чат — показываем детали
+  //при переходе в чат
   if (chatId) {
     return <ChatDetailsPage chatId={chatId} />;
   }
 
-  // Иначе — просто список чатов
+  // список чата по дефолту
   return <ChatListPage />;
 }
