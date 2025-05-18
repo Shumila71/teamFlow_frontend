@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef  } from "react";
 import ChatWindow from "./ChatWindow";
 import UserManagement from "./UserManagement";
+import { API_URL } from '../config';
 
 export default function ChatDetailsPage({ chatId }) {
   const token = localStorage.getItem("token");
@@ -9,10 +10,10 @@ export default function ChatDetailsPage({ chatId }) {
   const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
   const [availableHeight, setAvailableHeight] = useState(window.innerHeight);
-
+  const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
     // Загружаем список чатов, чтобы найти название текущего чата
-    fetch("${process.env.REACT_APP_API_URL}/api/chats", {
+    fetch(`${API_URL}/api/chats`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())

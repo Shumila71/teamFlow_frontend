@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/chatList.css";
+import { API_URL } from '../config';
 
 export default function ChatListPage() {
   const [chats, setChats] = useState([]);
@@ -12,7 +13,7 @@ export default function ChatListPage() {
   
 
   useEffect(() => {
-    fetch("${process.env.REACT_APP_API_URL}/api/chats", {
+    fetch(`${API_URL}/api/chats`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -30,7 +31,7 @@ export default function ChatListPage() {
     if (!newChatName.trim()) return;
 
     try {
-      const res = await fetch("${process.env.REACT_APP_API_URL}/api/chats/create", {
+      const res = await fetch(`${API_URL}/api/chats/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +52,7 @@ export default function ChatListPage() {
 
   const handleDelete = async (chatId) => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/chats/${chatId}`, {
+      const res = await fetch(`${API_URL}/api/chats/${chatId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

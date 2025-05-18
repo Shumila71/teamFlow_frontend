@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from '../config';
 import "../styles/auth.css"; 
 
 export default function LoginForm() {
@@ -13,7 +14,7 @@ export default function LoginForm() {
     setError(null);
 
     try {
-      const res = await fetch("${process.env.REACT_APP_API_URL}/api/auth/login", {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

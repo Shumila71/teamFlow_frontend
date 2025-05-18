@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import socket from "../utils/socket";
 import EmojiPicker from "emoji-picker-react";
+import { API_URL } from '../config';
 
 export default function ChatWindow({ chatId, userId, token }) {
   const [messages, setMessages] = useState([]);
@@ -35,7 +36,7 @@ export default function ChatWindow({ chatId, userId, token }) {
     socket.connect();
     socket.emit("joinChat", chatId);
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/messages/${chatId}`, {
+    fetch(`${API_URL}/api/messages/${chatId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
