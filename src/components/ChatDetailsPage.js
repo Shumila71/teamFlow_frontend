@@ -12,7 +12,7 @@ export default function ChatDetailsPage({ chatId }) {
 
   useEffect(() => {
     // Загружаем список чатов, чтобы найти название текущего чата
-    fetch("/api/chats", {
+    fetch("${process.env.REACT_APP_API_URL}/api/chats", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())

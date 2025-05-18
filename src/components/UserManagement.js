@@ -11,7 +11,7 @@ function AddUserForm({ chatId, onUserAdded }) {
     setError(null);
 
     try {
-      const res = await fetch(`/api/chats/add-user`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/chats/add-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function UserList({ chatId, users, refreshUsers }) {
   const makeAdmin = async (userId) => {
     setError(null);
     try {
-      const res = await fetch(`/api/chats/${chatId}/assign-role`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_URL}/api/chats/${chatId}/assign-role`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ function UserList({ chatId, users, refreshUsers }) {
   const revokeAdmin = async (userId) => {
     setError(null);
     try {
-      const res = await fetch(`/api/chats/${chatId}/revoke-admin/${userId}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/chats/${chatId}/revoke-admin/${userId}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -104,7 +104,7 @@ function UserList({ chatId, users, refreshUsers }) {
   const removeUser = async (userId) => {
     setError(null);
     try {
-      const res = await fetch(`/api/chats/${chatId}/users/${userId}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/chats/${chatId}/users/${userId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -128,7 +128,7 @@ function UserList({ chatId, users, refreshUsers }) {
     setError(null);
 
     try {
-      const res = await fetch(`/api/chats/${chatId}/assign-position-tag`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/chats/${chatId}/assign-position-tag`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -197,7 +197,7 @@ export default function UserManagement({ chatId }) {
   const fetchUsers = useCallback(async () => {
     if (!chatId) return;
     try {
-      const res = await fetch(`/api/chats/${chatId}/users`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/chats/${chatId}/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Ошибка загрузки пользователей");

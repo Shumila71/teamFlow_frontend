@@ -35,7 +35,7 @@ export default function ChatWindow({ chatId, userId, token }) {
     socket.connect();
     socket.emit("joinChat", chatId);
 
-    fetch(`/api/messages/${chatId}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/messages/${chatId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -133,7 +133,7 @@ export default function ChatWindow({ chatId, userId, token }) {
           <div key={m.id} style={messageStyles(m.sender_id)}>
             {m.sender_id !== numericUserId && (
               <div style={{ fontWeight: "bold", marginBottom: "4px", fontSize: "0.9em" }}>
-                {m.username}
+                {m.username} {m.position_tag && ` (${m.position_tag})`}
               </div>
             )}
             {m.text}

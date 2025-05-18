@@ -12,7 +12,7 @@ export default function ChatListPage() {
   
 
   useEffect(() => {
-    fetch("/api/chats", {
+    fetch("${process.env.REACT_APP_API_URL}/api/chats", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -30,7 +30,7 @@ export default function ChatListPage() {
     if (!newChatName.trim()) return;
 
     try {
-      const res = await fetch("/api/chats/create", {
+      const res = await fetch("${process.env.REACT_APP_API_URL}/api/chats/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export default function ChatListPage() {
 
   const handleDelete = async (chatId) => {
     try {
-      const res = await fetch(`/api/chats/${chatId}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/chats/${chatId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
